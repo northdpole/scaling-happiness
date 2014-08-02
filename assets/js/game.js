@@ -49,7 +49,6 @@ function Canvas(canvas_element) {
 function Screen() {
 	this.buttons = [];
 	this.background = null;
-	this.level = null; // There is no level to begin with
 	this.canvas = null;
 
 	this.addButton = function(button) {
@@ -170,8 +169,19 @@ function MapScreen() {
 	level1Button.text = "Level 1 - Linac";
 
 	level1Button.action = function () {
-		alert("LEVEL 1");
+		this.screen.canvas.setScreen(2);// Set screen to the level screen
 	}
+}
+
+function LevelScreen() {
+	this.__proto__ = new Screen();
+	this.background = new Background("img/test/test.jpg");
+	this.level = new Level(1);
+
+}
+
+function Level(level_number) {
+	
 }
 
 function load() {
@@ -184,6 +194,7 @@ function load() {
 
 	canvas.addScreen(new MenuScreen());
 	canvas.addScreen(new MapScreen());
+	canvas.addScreen(new LevelScreen());
 	canvas.setScreen(0);
 
 	setInterval(function(){canvas.tick()}, 1000/fps);
