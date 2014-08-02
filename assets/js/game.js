@@ -5,6 +5,7 @@ function Canvas(canvas_element) {
 	this.context = canvas_element.getContext("2d");
 
 	this.addScreen = function(s) {
+		s.canvas = this;
 		this.screens.push(s);
 	}
 
@@ -38,9 +39,12 @@ function Screen() {
 	this.buttons = [];
 	this.background = null;
 	this.level = null; // There is no level to begin with
+	this.canvas = null;
 
 	this.addButton = function(button) {
+		button.screen = this;
 		this.buttons.push(button);
+		return button;
 	}
 
 	this.draw = function(context) {
@@ -116,14 +120,17 @@ function Button(x, y, w, h) {
 
 function MenuScreen() {
 	this.__proto__ = new Screen();
-	this.background = new Background("/img/test/test.jpg");
+	this.background = new Background("img/test/test.jpg");
 
 	testButton = new Button(0.25, 0.25, 0.5, 0.1);
+
+	testButton = this.addButton(testButton);
+
 	testButton.action = function () {
-		testButton.text = "You clicked me!";
+		console.log(this);
+		this.screen.setScreen(23);
 	}
 
-	this.addButton(testButton);
 
 	return this;
 }
