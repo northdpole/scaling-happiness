@@ -1,3 +1,15 @@
+function path() {
+
+	this.p1 = {x:0,y:5};
+	this.p2 = {x:5,y:5};
+	this.p3 = {x:5,y:0};
+	this.p4 = {x:5,y:0};
+
+	function getPoint(t) {
+		return 0.5 * ( ( 2.0 * this.p1) + (this.p2 - this.p0) * t + (2.0 * this.p0 - 5.0*this.p1 + 4.0*this.p2 -this.p3)*Math.pow(t,2)+(-this.p0+3.0*this.p1-3.0*this.p2+this.p3)*Math.pow(t,3));
+	}
+}
+
 function foe(id,hp,type,speed,focus,bending){
 	 this.hp = hp;
 	 this.type = type;
@@ -10,6 +22,7 @@ function foe(id,hp,type,speed,focus,bending){
 	 this.modify_focus = modify_focus;
 	 this.bend = bend;
 	 this.accelerate = accelerate;
+	 this.time = 0;
 	/* Function to be overriden by bunch */
 	function modify_focus(){}
 
@@ -17,6 +30,12 @@ function foe(id,hp,type,speed,focus,bending){
 	 * creep follow the path
 	 */
 	function march(path){
+		this.path = path;
+	}
+
+	function tick() {
+		this.position = this.path.getPoint(this.time);
+		this.time = this.time + 1;
 	}
 	
 	/* Accelerates/decelerates a particle
@@ -48,6 +67,8 @@ function foe(id,hp,type,speed,focus,bending){
 function particle(img){
 	this.__proto__ = new foe
 	this.img = img;
+
+
 }
 
 function bunch(particles){

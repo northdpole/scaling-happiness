@@ -10,4 +10,5 @@ function wave(foes,id){
 		for(i=0;i<foes.length;i++)
 			foes[i].march;
 		}
+	return this;
 }
