@@ -1,0 +1,15 @@
+Hello fellow visitor and welcome to CERN!
+
+We can guarantee that you're gonna have a great time!
+
+CERN is the European Organization for Nuclear Research where Physicist and engineers are probing the fundamental structure of the universe.
+
+They use the world's largest and most complex scientific instruments to study the basic constituents of matter – the fundamental particles.
+
+The particles are made to collide together at close to the speed of light. The process gives the physicists clues about how the particles interact, and provides insights into the fundamental laws of nature.
+
+In this game we'll follow the path of the proton beam, from LINAC2, the first accelerator it enters, all the way to LHC!. Your job would be to provide the particles with enough energy to enter to the higher levels, without letting them collide in the sides of the accelerators.
+
+To help you to your quest, we'll provide you with the equipment required to manipulate the beam... but we'll talk about that in a few minutes.
+
+So once again welcome and have fun!

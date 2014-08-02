@@ -1,0 +1,15 @@
+To accelerate the particles CERN uses radiofrequency (RF) cavities.
+
+A radiofrequency (RF) cavity, is a metallic chamber that contains an electromagnetic field. RF cavities can be structured like beads on a string, where the beads are the cavities and the string is the beam pipe of a particle accelerator, through which particles travel in a vacuum.
+
+To prepare an RF cavity to accelerate particles, an RF power generator supplies an electromagnetic field. The RF cavity is molded to a specific size and shape so that electromagnetic waves become resonant and build up inside the cavity. Charged particles passing through the cavity feel the overall force and direction of the resulting electromagnetic field, which transfers energy to push them forwards along the accelerator.
+
+The field in an RF cavity is made to oscillate (switch direction) at a given frequency, so timing the arrival of particles is important. On the Large Hadron Collider (LHC), each RF cavity is tuned to oscillate at 400 MHz. The ideally timed proton, with exactly the right energy, will see zero accelerating voltage when the LHC is at full energy. Protons with slightly different energies arriving earlier or later will be accelerated or decelerated so that they stay close to the energy of the ideal particle. In this way, the particle beam is sorted into discrete packets called "bunches".
+
+The LHC accelerates beams of protons and brings them into collision inside the four large detectors ALICE, ATLAS, CMS and LHCb. Particles are injected into the LHC at 450 GeV, and boosted to 4 TeV – nearly 10 times their injection energy. At these energies a proton completes roughly 11,000 laps of the 27-kilometre accelerator every second.
+
+During the energy-boosting process the protons in the bunches shift collectively to see an overall acceleration on each passage through the cavities, picking up the energy needed to keep up with the increasing field in the LHC's powerful magnets. Top energy is reached in around 15 minutes, the bunches having passed the cavities around 1 million times.
+
+The 16 RF cavities on the LHC are housed in four cylindrical refrigerators called cryomodules – two per beam – which keep the RF cavities working in a superconducting state, without losing energy to electrical resistance.
+
+High-power klystrons (tubes containing electron beams) drive each RF cavity on the LHC. A high-power electron beam inside the klystron modulates at 400 MHz. Power is extracted through a rectangular pipe of conducting metal called a waveguide, which leads to the RF cavity. Each cavity can achieve a maximum voltage of 2 MV, making 16 MV per beam.

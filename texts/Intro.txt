@@ -1,0 +1,2 @@
+The accelerator complex at CERN is a succession of machines with increasingly higher energies. Each machine injects the beam into the next one, which takes over to bring the beam to an even higher energy, and so on. In the LHC —the last element of this chain— each particle beam is accelerated up to the record energy of 7 TeV. In addition, most of the other accelerators in the chain have their own experimental halls, where the beams are used for experiments at lower energies.
+
