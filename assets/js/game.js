@@ -6,6 +6,7 @@ function id(id) {
 
 function Canvas(canvas_element) {
 	this.screens = [];
+	this.canvas_element = canvas_element;
 	this.context = canvas_element.getContext("2d");
 
 	this.addScreen = function(s) {
@@ -93,7 +94,7 @@ function Background(file_name) {
 	this.img.src = file_name;
 
 	this.draw = function(context) {
-		context.drawImage(this.img, 0, 0);
+		context.drawImage(this.img, 0, 0, context.canvas.width, context.canvas.height);
 	}
 
 	return this;
@@ -136,6 +137,7 @@ function Button(x, y, w, h) {
 		if (this.mouseIsOver(event)) {
 			id("button_pressed").play();
 			this.action();
+			this.screen.canvas.canvas_element.style.cursor = "default";
 		}
 	}
 
@@ -143,10 +145,12 @@ function Button(x, y, w, h) {
 		if (this.mouseIsOver(event)) {
 			if (!this.hover) {
 				id("button_hover").play();
+				this.screen.canvas.canvas_element.style.cursor = "pointer";
 			}
 			this.hover = true;
 		} else {
 			this.hover = false;
+			this.screen.canvas.canvas_element.style.cursor = "default";
 		}
 	}
 
@@ -187,7 +191,7 @@ function MapScreen() {
 	this.__proto__ = new Screen();
 	this.background = new Background("img/test/map.png");
 
-	level1Button = new InvisibleButton(0.25, 0.25, 0.5, 0.1);
+	level1Button = new InvisibleButton(0.01, 0.65, 0.4, 0.3);
 	level1Button = this.addButton(level1Button);
 	level1Button.text = "Level 1 - Linac";
 
