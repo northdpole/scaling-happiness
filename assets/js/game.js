@@ -116,17 +116,17 @@ function Button(x, y, w, h) {
 			w: this.w * context.canvas.width,
 			h: this.h * context.canvas.height
 		}
-		context.fillStyle = this.hover?"#FFF":"#CCC";
-		context.strokeStyle = "#000";
+		context.fillStyle = this.hover?"#000":"#FFF";
 		context.fillRect(scaled.x, scaled.y, scaled.w, scaled.h);
-		context.strokeRect(scaled.x, scaled.y, scaled.w, scaled.h);
-
-		context.font = (scaled.h - 10) + "px Comic Sans MS";
 		context.fillStyle = "#000";
+		context.fillRect(scaled.x, scaled.y + scaled.h - 2, scaled.w, 2);
+
+		context.font = (scaled.h - 20) + "px buttonFont";
+		context.fillStyle = !this.hover?"#000":"#FFF";
 		context.fillText(
 			this.text,
-			this.x * context.canvas.width, 
-			(this.y + this.h) * context.canvas.height - 8);
+			this.x * context.canvas.width + 5, 
+			(this.y + this.h) * context.canvas.height - 12 + (this.hover?2:0));
 	}
 
 	this.mouseIsOver = function(event) {
@@ -193,10 +193,9 @@ function MapScreen() {
 
 	level1Button = new InvisibleButton(0.01, 0.65, 0.4, 0.3);
 	level1Button = this.addButton(level1Button);
-	level1Button.text = "Level 1 - Linac";
 
 	level1Button.action = function () {
-		this.screen.canvas.setScreen(2);// Set screen to the level screen
+		this.screen.canvas.setScreen(0);// Set screen to the level screen
 	}
 }
 
