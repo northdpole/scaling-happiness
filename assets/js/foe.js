@@ -10,6 +10,8 @@ function foe(id,hp,type,speed,focus,bending){
 	 this.modify_focus = modify_focus;
 	 this.bend = bend;
 	 this.accelerate = accelerate;
+	 this.explode =  explode;
+
 	/* Function to be overriden by bunch */
 	function modify_focus(){}
 
@@ -43,6 +45,17 @@ function foe(id,hp,type,speed,focus,bending){
 			this.hp-=dmg
 			return this.hp;
 		}
+	}
+	/* makes a "big" particle
+	 * explode into smaller ones
+	 * useful for collisions
+	 * returns an array of the new particles
+	 */
+	function explode(){
+		var parts = [];
+		for(i=0; i<10; i++)
+			parts.push(new particle(i+20,this.hp/10,this.type,this.speed,this.focus/2,this.bending));
+		return parts;
 	}
 }
 function particle(img){
