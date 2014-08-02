@@ -22,15 +22,26 @@ function Canvas(canvas_element) {
 		this.draw(this.context);
 	}
 
-	this.mouseClick = function(event) {
-		event = {
+	this.scaleMouseEvent = function(event) {
+		return {
 			x: event.offsetX / this.context.canvas.width, 
-			y: event.offsetY / this.context.canvas.height};
+			y: event.offsetY / this.context.canvas.height
+		};
+	}
 
+	this.mouseClick = function(event) {
+		event = this.scaleMouseEvent(event);
 		this.current_screen.mouseClick(event);
 	}
+
+	this.mouseMove = function(event) {
+		event = this.scaleMouseEvent(event);
+		this.current_screen.mouseMove(event);
+	}
+
 	p = this;
 	canvas_element.addEventListener("click", function(event) {p.mouseClick(event);});
+	canvas_element.addEventListener("mousemove", function(event) {p.mouseMove(event);});
 
 	return this;
 }
@@ -64,6 +75,12 @@ function Screen() {
 		}
 	}
 
+	this.mouseMove = function(event) {
+		for (i = 0;i < this.buttons.length; ++i) {
+			this.buttons[i].mouseMove(event);
+		}
+	}
+
 	return this;
 }
 
@@ -86,6 +103,7 @@ function Button(x, y, w, h) {
 	this.h = h;
 	this.action = function () {console.log("Button action!")}
 	this.text = "Button";
+	this.hover = false;
 
 	this.draw = function(context) {
 		scaled = {
@@ -94,7 +112,7 @@ function Button(x, y, w, h) {
 			w: this.w * context.canvas.width,
 			h: this.h * context.canvas.height
 		}
-		context.fillStyle = "#FFF";
+		context.fillStyle = this.hover?"#FFF":"#CCC";
 		context.strokeStyle = "#000";
 		context.fillRect(scaled.x, scaled.y, scaled.w, scaled.h);
 		context.strokeRect(scaled.x, scaled.y, scaled.w, scaled.h);
@@ -107,11 +125,21 @@ function Button(x, y, w, h) {
 			(this.y + this.h) * context.canvas.height - 8);
 	}
 
+	this.mouseIsOver = function(event) {
+		return event.x > this.x && event.y > this.y && event.x < this.x + this.w && event.y < this.y + this.h;
+	}
+
 	this.mouseClick = function(event) {
-		if (event.x > this.x && event.y > this.y &&
-			event.x < this.x + this.w &&
-			event.y < this.y + this.h) {
+		if (this.mouseIsOver(event)) {
 			this.action();
+		}
+	}
+
+	this.mouseMove = function(event) {
+		if (this.mouseIsOver(event)) {
+			this.hover = true;
+		} else {
+			this.hover = false;
 		}
 	}
 
@@ -122,17 +150,28 @@ function MenuScreen() {
 	this.__proto__ = new Screen();
 	this.background = new Background("img/test/test.jpg");
 
-	testButton = new Button(0.25, 0.25, 0.5, 0.1);
+	startButton = new Button(0.25, 0.25, 0.5, 0.1);
+	startButton = this.addButton(startButton);
+	startButton.text = "Start Game";
 
-	testButton = this.addButton(testButton);
-
-	testButton.action = function () {
-		console.log(this);
-		this.screen.setScreen(23);
+	startButton.action = function () {
+		this.screen.canvas.setScreen(1);
 	}
 
-
 	return this;
+}
+
+function MapScreen() {
+	this.__proto__ = new Screen();
+	this.background = new Background("img/test/kitten.jpg");
+
+	level1Button = new Button(0.25, 0.25, 0.5, 0.1);
+	level1Button = this.addButton(level1Button);
+	level1Button.text = "Level 1 - Linac";
+
+	level1Button.action = function () {
+		alert("LEVEL 1");
+	}
 }
 
 function load() {
@@ -144,6 +183,7 @@ function load() {
 	fps = 30;
 
 	canvas.addScreen(new MenuScreen());
+	canvas.addScreen(new MapScreen());
 	canvas.setScreen(0);
 
 	setInterval(function(){canvas.tick()}, 1000/fps);
