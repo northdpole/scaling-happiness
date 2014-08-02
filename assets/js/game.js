@@ -106,6 +106,8 @@ function Button(x, y, w, h) {
 	this.w = w;
 	this.h = h;
 	this.action = function () {console.log("Button action!")}
+	this.enter = function () {console.log("Button enter!")}
+	this.exit = function () {console.log("Button exit!")}
 	this.text = "Button";
 	this.hover = false;
 
@@ -138,6 +140,7 @@ function Button(x, y, w, h) {
 			id("button_pressed").play();
 			this.action();
 			this.screen.canvas.canvas_element.style.cursor = "default";
+			this.hover = false;
 		}
 	}
 
@@ -146,11 +149,15 @@ function Button(x, y, w, h) {
 			if (!this.hover) {
 				id("button_hover").play();
 				this.screen.canvas.canvas_element.style.cursor = "pointer";
+				this.enter();
 			}
 			this.hover = true;
 		} else {
+			if (this.hover) {
+				this.screen.canvas.canvas_element.style.cursor = "default";
+				this.exit();
+			}
 			this.hover = false;
-			this.screen.canvas.canvas_element.style.cursor = "default";
 		}
 	}
 
@@ -167,7 +174,7 @@ function InvisibleButton(x, y, w, h) {
 			w: this.w * context.canvas.width,
 			h: this.h * context.canvas.height
 		}
-		context.strokeStyle = "#000";
+		context.strokeStyle = this.hover?"#f00":"#000";
 		context.strokeRect(scaled.x, scaled.y, scaled.w, scaled.h);
 	}
 }
