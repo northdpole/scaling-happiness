@@ -1,82 +1,47 @@
 <html><head>
+	
+<!--
+Background
+Contains an image for displaying background of the level
+
+Wave
+Describes how a wave of particles will be spawned
+Particle
+Travels along particle path and can be changed by towers that are in range only
+Tower
+Can be
+ -->
 <script type="text/javascript">
 
-	var placeables = [new placeable(), new placeable(),new placeable()]
+
+	var placeables = [new quadrupole(), new dipole(),new accelerator_cavity()]
 	var waves =[]
 	var foes = []
 
 	for(i=0;i<2;i++){
-		foes.push(new foe(i,15,'p',1))
+		foes.push(new bunch(i,15,'p',1));
+		foes.push(new particle(i,15,'p',1));
 	}
 	for(i=0;i<2;i++){
-		waves.push(new wave(foes));
+		waves.push(new wave(foes,i));
 	}
 	var levels = [new level(waves)];
 	for(i=0; i<levels.length; i++){
 			var waves = levels[i].waves
 			for(j=0; j<waves.length; j++){
-								while(waves[j].foes.length > 0){
 					for(k=0; k<foes.length; k++){
 						var foo = placeables[k];
-						if(foo.hit(foes[k]) == 0){
+						console.log(foo);
+						if(foo.hit(10,foes[k]) == 0){
 							delete foes[k];
 						}
 						console.log(foes);
 						}
 						
-					}
+					
 				}
 		}
-
-function foe(id,hp,type,speed){
-	 this.hp = hp;
-	 this.type = type;
-	 this.speed = speed;
-	 this.id = id;
-	 this.rmvhp = rmvhp;
-	
-	function rmvhp(dmg){
-		console.log("foe "+id+"received dmg " + dmg);
-		if(dmg>hp)
-			return 0;
-		else{
-			this.hp-=dmg
-			return this.hp;
-		}
-	}
-}
-function wave(foes){
-	this.foes = foes
-	for(i=0; i<foes.length; i++){
-		console.log(this.foes[i].hp)
-		}
-	}
-	
-function level(wave){
-	this.waves = wave;
-	for(i=0; i<wave.length; i++){
-		console.log(wave[i].foes)
-		}
-	}
-
-function placeable(where){
-	this.dmg = 50;
-
-	this.hit = hit;
-	
-	function hit(foe){
-		return foe.rmvhp(this.dmg);
-		}
-	}
-	
-function trap(){
-	
-	}
-	
-function tower(){
-	
-	}
-
+</script>
 </script>
 </head>
 <body onload="">
