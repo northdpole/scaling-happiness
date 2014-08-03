@@ -195,6 +195,27 @@ function MenuScreen() {
 		this.screen.canvas.setScreen(1);
 	}
 
+	aboutButton.action = function () {
+		this.screen.canvas.setScreen(3);
+	}
+
+	return this;
+}
+
+function AboutScreen() {
+	this.__proto__ = new Screen();
+	this.background = new Background("img/test/backgrounds/About.jpg");
+
+	backButton = new Button(0.6,0.9,0.4,0.1);
+	backButton.text = "back";
+
+	backButton.action = function() {
+		this.screen.canvas.setScreen(0);
+	}
+
+	this.addButton(backButton);
+
+
 	return this;
 }
 
@@ -265,6 +286,7 @@ function load() {
 	canvas.addScreen(new MenuScreen());
 	canvas.addScreen(new MapScreen());
 	canvas.addScreen(new LevelScreen());
+	canvas.addScreen(new AboutScreen());
 	canvas.setScreen(0);
 
 	setInterval(function(){canvas.tick()}, 1000/fps);
