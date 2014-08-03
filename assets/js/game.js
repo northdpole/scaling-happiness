@@ -214,8 +214,17 @@ function MapScreen() {
 	level5Button = this.addButton(level5Button);
 
 	level1Button.action = function () {
-		this.screen.canvas.setScreen(2);// Set screen to the level screen
+		window.location = "tower-defence"
 	}
+
+	backButton = new Button(0.6,0.9,0.4,0.1);
+	backButton.text = "back";
+
+	backButton.action = function() {
+		this.screen.canvas.setScreen(0);
+	}
+
+	this.addButton(backButton);
 }
 
 function LevelScreen() {
