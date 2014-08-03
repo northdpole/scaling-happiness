@@ -165,7 +165,7 @@ function Button(x, y, w, h) {
 }
 
 function InvisibleButton(x, y, w, h) {
-	this.__proto__ = Button(x, y, w, h);
+	this.__proto__ = new Button(x, y, w, h);
 
 	this.draw = function(context) {
 		scaled = {
@@ -186,6 +186,10 @@ function MenuScreen() {
 	startButton = new Button(0.25, 0.25, 0.5, 0.1);
 	startButton = this.addButton(startButton);
 	startButton.text = "Start Game";
+	aboutButton = new Button(0.25, 0.35, 0.5, 0.1);
+	aboutButton = this.addButton(aboutButton);
+	aboutButton.text = "About";
+
 
 	startButton.action = function () {
 		this.screen.canvas.setScreen(1);
@@ -200,6 +204,14 @@ function MapScreen() {
 
 	level1Button = new InvisibleButton(0.01, 0.65, 0.4, 0.3);
 	level1Button = this.addButton(level1Button);
+	level2Button = new InvisibleButton(0.415, 0.48, 0.15, 0.15);
+	level2Button = this.addButton(level2Button);
+	level3Button = new InvisibleButton(0.575, 0.53, 0.32, 0.3);
+	level3Button = this.addButton(level3Button);
+	level4Button = new InvisibleButton(0.3, 0.2, 0.38, 0.265);
+	level4Button = this.addButton(level4Button);
+	level5Button = new InvisibleButton(0.14, 0.0, 0.15, 0.15);
+	level5Button = this.addButton(level5Button);
 
 	level1Button.action = function () {
 		this.screen.canvas.setScreen(2);// Set screen to the level screen
