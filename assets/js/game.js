@@ -220,6 +220,7 @@ function MapScreen() {
 	level2Button.action = function () {this.screen.canvas.setScreen(3); }
 	level3Button.action = function () {this.screen.canvas.setScreen(4); }
 	level4Button.action = function () {this.screen.canvas.setScreen(5); }
+	level5Button.action = function () {this.screen.canvas.setScreen(6); }
 
 	backButton = new Button(0.6,0.9,0.4,0.1);
 	backButton.text = "back";
