@@ -226,6 +226,10 @@ function LevelScreen() {
 		}
 	}
 
+	dipoleButton = new TowerButton(0.8, 0, "dipole");
+
+	this.addButton(dipoleButton);
+
 	this.setLevel(1);
 }
 

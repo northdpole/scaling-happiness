@@ -58,7 +58,7 @@ this.particle = function(){
 			x: this.position.x * context.canvas.width,
 			y: this.position.y * context.canvas.height
 		}
-		context.drawImage(this.img, scaled.x, scaled.y, 10, 10);
+		context.drawImage(this.img, scaled.x, scaled.y, 25, 25);
 	}
 
 }

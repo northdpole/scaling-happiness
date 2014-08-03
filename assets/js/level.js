@@ -15,7 +15,8 @@ function Path() {
 
 function Level(level_number, screen) {
 	this.screen = screen;
-	this.screen.background = new Background("img/level/"+level_number+".jpg");
+	// this.screen.background = new Background("img/level/"+level_number+".jpg");
+	id("body").style.backgroundImage = "img/level/"+level_number+".jpg";
 	this.path = new Path();
 	this.path.addPoint({x: 0,y: 0.5});
 	this.path.addPoint({x: 1.0,y: 0.5});
