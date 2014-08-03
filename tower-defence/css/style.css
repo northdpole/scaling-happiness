@@ -1,0 +1,196 @@
+body {
+	background-color: #505050;
+	font-family:"Verdana", sans-serif, serif;
+}
+#game {
+	width: 800px;
+	height: 600px;
+	margin: 0 auto;
+	position: relative;
+}
+
+#gameCanvas {
+	display: block;
+	margin: 0;
+	float: left;
+}
+
+#restart{
+	text-align: center;
+	position: absolute;
+	left: 28.2%;
+	top: 380px;
+	color: #FA0000;	
+}
+
+#gameStats {
+	float: left;
+	width: 200px;
+	height: 600px;
+	background-color: rgba(30, 30, 30, 1.0);
+}
+
+#gameStats .gameValues{
+	padding: 0px 0px 0px 20px;
+	cursor: default;
+	color: white;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+#gameStats .gameValuesText{
+	padding: 0px 0px 0px 20px;
+	cursor: default;
+	color: white;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+#gameCover {
+	bottom: 0px;
+	left: 0px;
+	position: absolute;
+	width: 600px;
+	height: 100%;
+	background: rgba(54, 54, 84, 0.3);
+	visibility: visible;
+}
+
+#buildList {
+	bottom: 25px;
+	left: 75px;
+	position: absolute;
+	background: rgba(215, 215, 215, 1.0);
+	visibility: visible;
+}
+
+#buildList a {
+	background: rgba(150, 150, 150, 1.0);
+	border: none;
+	font-size: 17px;
+	margin: 5px auto;
+	display: block;
+	width: 100px;
+	height: 30px;
+	text-align: center;
+	cursor: default;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+#buildList a.inactive {
+	background: rgba(200, 200, 200, 1.0);
+	color: rgba(150, 150, 150, 1.0);
+}
+
+#buildList a:hover {
+	background: rgba(190, 190, 190, 1.0);
+}
+
+#towerStats {
+	background: rgba(215, 215, 215, 1.0);
+	position: absolute;
+}
+
+#statBarBack {
+	background: rgba(100, 100, 100, 1.0);
+	position: absolute;
+}
+
+#statBarFore {
+	background: rgba(200, 200, 150, 1.0);
+	position: absolute;
+}
+
+#statTitle {
+	text-align: center;
+	position: absolute;
+}
+
+#pauseCover {
+	bottom: 0px;
+	left: 0px;
+	position: absolute;
+	width: 600px;
+	height: 100%;
+	background: rgba(54, 54, 84, 0.3);
+	visibility: hidden;
+}
+
+#pause {
+	text-align: center;
+	vertical-align: bottom;
+	cursor: default;
+	position: absolute;
+	width: 200px;
+	bottom: 20px;
+	right: 0;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+#resume{
+	text-align: center;
+	position: absolute;
+	left: 26.5%;
+	top: 320px;
+	color: #66FF00;	
+}
+.button {
+   border-top: 1px solid #96d1f8;
+   background: #65a9d7;
+   background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#65a9d7));
+   background: -webkit-linear-gradient(top, #3e779d, #65a9d7);
+   background: -moz-linear-gradient(top, #3e779d, #65a9d7);
+   background: -ms-linear-gradient(top, #3e779d, #65a9d7);
+   background: -o-linear-gradient(top, #3e779d, #65a9d7);
+   padding: 9px 18px;
+   -webkit-border-radius: 4px;
+   -moz-border-radius: 4px;
+   border-radius: 4px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: white;
+   font-size: 23px;
+   font-family: Helvetica, Arial, Sans-Serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+.button:hover {
+   border-top-color: #28597a;
+   background: #28597a;
+   color: #ccc;
+   }
+.button:active {
+   border-top-color: #1b435e;
+   background: #1b435e;
+   }
+
+#pauseMessage {
+	text-align: center;
+	position: absolute;
+	cursor: default;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	font-size: 40px;
+}

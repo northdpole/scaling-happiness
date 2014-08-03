@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>CTD</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
+	<script src="js/init.js"></script>
+	<script src="js/renderer.js"></script>
+	<script src="js/map.js"></script>
+	<script src="js/turret-types.js"></script>
+	<script src="js/enemy-types.js"></script>
+	<script src="js/tower-abilitys.js"></script>
+	<script src="js/turrets.js"></script>
+	<script src="js/turret.js"></script>
+	<script src="js/player.js"></script>
+	<script src="js/input.js"></script>
+	<script src="js/enemies.js"></script>
+	<script src="js/emitter.js"></script>
+	<script src="js/particle.js"></script>
+	<script src="js/tracer.js"></script>
+	<script src="js/bullet.js"></script>
+	<script src="js/bullets.js"></script>
+	<script src="js/enemy.js"></script>
+	<script src="js/game.js"></script>
+	<script src="js/mainmenu.js"></script>
+	<script src="js/pausestate.js"></script>
+	<script src="js/ui.js"></script>
+	<script src="js/fsm.js"></script>
+	<script src="js/client.js"></script>
+	<script src="js/soundmanager.js"></script>
+	<script src="js/wang.js"></script>
+</head>
+
+<script>
+function pse(){
+	if (window.fsm.getName() === "gamegamegame") {
+			window.fsm.changeState(window.pause);
+		}
+}	
+</script>
+<script>
+soundManager.setup({
+	url: 'js/', // path to load SWF from (overriding default)
+	bgColor: '#333333',
+	wmode: 'transparent',
+	debugMode: false,
+	preferFlash: false,
+	html5PollingInterval: 50,
+	
+	onready: function() {
+		var TT = td.TurretTypes;
+		for(tower in TT){
+			for(var j=0; j<TT[tower]["sounds"].length; j++){
+				soundManager.createSound({
+					id: TT[tower]["sounds"][j].split(".")[0].split("/")[1],
+					url: 'audio/'+TT[tower]["sounds"][j],
+				});	
+			}
+		}
+		soundManager.setup({
+			defaultOptions: {
+				autoLoad: true,
+				multiShot: true,
+			}
+		});
+	}
+});
+</script>
+<body>
+	<div role="main" id="game">
+		<img src="img/1.jpg" id="bg" style="display:none;" width="0">
+		<div style="position:relative">
+			<canvas id="gameCanvas" width='400'></canvas>
+			<input style="display:none" class="button" type="button" id="resume" value="Продолжить" onClick="window.fsm.gotoPrevState(); document.getElementById('resume').style.display = 'none'; document.getElementById('restart').style.display = 'none';">
+			<input style="display:none" class="button" type="button" id="restart" value="Обновить" onClick="window.location.reload(); document.getElementById('restart').style.display = 'none'; document.getElementById('resume').style.display = 'none';">
+
+		</div>
+		<div id="gameStats">
+			<table>
+				<tr>
+					<td><div class="gameValuesText">Gold: </div></td>
+					<td><div id="gameMoney" class="gameValues">0</div></td>
+				</tr>
+				<tr>
+					<td><div class="gameValuesText">Health: </div></td>
+					<td><div id="gameHP" class="gameValues">0</div></td>
+				</tr>
+				<tr>
+					<td><div class="gameValuesText">Level: </div></td>
+					<td><div id="gameLvl" class="gameValues">1</div></td>
+				</tr>
+				<tr>
+					<td><div class="gameValuesText">Experience: </div></td>
+					<td><div id="gameExp" class="gameValues">0/403</div></td>
+				</tr>				
+				<tr>
+					<td><div class="gameValuesText">Wave: </div></td>
+					<td><div id="gameWave" class="gameValues">0</div></td>
+				</tr>
+				<tr>
+					<div id="untilNextWave">
+						<td><div class="gameValuesText">Before the Waves: </div></td>
+						<td><div id="nextWaveTimer" class="gameValues">0 с.</div></td>
+					</div>
+				</tr>
+			</table>
+			<div id="pause">
+				<input class="button" type="button" value="Пауза" onClick="pse();">
+			</div>
+		</div>
+	</div>
+</body>
+</html>
