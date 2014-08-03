@@ -202,19 +202,31 @@ function MapScreen() {
 	level1Button = this.addButton(level1Button);
 
 	level1Button.action = function () {
-		this.screen.canvas.setScreen(0);// Set screen to the level screen
+		this.screen.canvas.setScreen(2);// Set screen to the level screen
 	}
 }
 
 function LevelScreen() {
 	this.__proto__ = new Screen();
 	this.background = new Background("img/test/test.jpg");
-	this.level = new Level(1);
 
-}
+	this.setLevel = function (level_number) {
+		this.level = new Level(1, this);
+	}
 
-function Level(level_number) {
+	this.tick = function () {
+		this.level.tick();
+	}
 
+	this.draw = function (context) {
+		this.background.draw(context);
+		this.level.draw(context);
+		for (i = 0; i < this.buttons.length; ++i) {
+			this.buttons[i].draw(context);
+		}
+	}
+
+	this.setLevel(1);
 }
 
 function load() {
