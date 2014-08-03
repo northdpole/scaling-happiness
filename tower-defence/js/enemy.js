@@ -23,6 +23,7 @@ td.Enemy = function(xGridStart, yGridStart, map, type) {
 	this.y = 0.0;
 	this.speed = type.speed + this.lvlCoof/6000;
 	this.hp = type.hp + this.lvlCoof*5;
+	this.targetHp = type.hp  + 25 + this.lvlCoof*2;
 	this.maxHp = type.hp + this.lvlCoof*5;
 	this.value = type.value + this.lvlCoof*10;
 	this.spawnTime = 0;
@@ -166,7 +167,8 @@ td.Enemy.prototype.update = function(dt, map, player) {
 		// Have we made it to the goal - if so the goal takes damage equal to
 		// our remaining hp
 		if (map.layout[this.yGridNext][this.xGridNext] === 2) {
-			map.goalHp = Math.floor( map.goalHp - this.hp );
+			if(this.hp < this.targetHp)
+				map.goalHp = Math.floor( map.goalHp - this.hp/3 );
 			if(map.goalHp<=0){
 				map.goalHp=0;
 				window.fsm.changeState(window.dead);

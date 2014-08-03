@@ -33,7 +33,7 @@ td.TurretTypes = {
 		img: "img/quad.png"
 	},
 
-
+/*
 	// long range artillery
 	"art": {
 		sounds: ['fire_single/magic1.mp3'],
@@ -50,7 +50,7 @@ td.TurretTypes = {
 		img: "acc.png"
 		
 	},
-
+*/
 
 	"slowpoke":{
 		sounds: ['fire_single/frost1.mp3'],
@@ -58,9 +58,9 @@ td.TurretTypes = {
 		id: 2,
 		range: 4.0,
 		cooldown: 1000.0,
-		damage: 0.2,
+		damage: -8,
 		cost: 200,
-		name: "sth",
+		name: "Accelerator",
 		color: "#0101FF",
 		halfSize: 10,
 		abilitys: ["freeze"],

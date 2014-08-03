@@ -62,7 +62,6 @@ td.Wang = function (size) {
 			}
 		}while(!found);
 	}
-	//Заполняем остальное
 	for(var y=1;y<height;y++){
 		for(var x=1;x<width;x++){
 			//console.log(x,y)
