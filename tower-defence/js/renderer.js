@@ -31,6 +31,25 @@ td.Renderer = function(canvas, game) {
 	this.edge = 62;
 	this.bg = document.getElementById('bg');
 
+	this.particleImg = new Image();
+	this.particleImg.src = "img/particle.png";
+	this.turretImg = new Image();
+	this.turretImg.src = "img/turret.png";
+
+	this.quadrupoleImg = new Image();
+	this.quadrupoleImg.src = "img/quadrupole.png";
+
+	this.dipoleImg = new Image();
+	this.dipoleImg.src = "img/dipole.png";
+
+	this.acceleratorImg = new Image();
+	this.acceleratorImg.src = "img/accelerator.png";
+
+	console.log(this.quadrupoleImg);
+	console.log(this.dipoleImg);
+	console.log(this.acceleratorImg);
+//	console.log("render called");
+	
 	var n = 0;
 	var titles = [];
 	for(var i = 1; i <= 4; i++){
@@ -41,9 +60,9 @@ td.Renderer = function(canvas, game) {
 			};
 		}
 	}
-	console.log(this.bg);
-	console.log(this.width);
-	console.log(this.height);
+	//console.log(this.bg);
+	//console.log(this.width);
+	//console.log(this.height);
 	
 	this.ctx.drawImage(this.bg,0,0,this.width,this.height);
 
@@ -59,13 +78,13 @@ td.Renderer = function(canvas, game) {
 
 };
 
-td.Renderer.prototype.startRendering = function(particleImg) {
+td.Renderer.prototype.startRendering = function(particleImg,turretImg) {
 	var _this = this;
 	var Range;
 	this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 	
 	this.renderMap();
-	this.renderTurrets();
+	this.renderTurrets(turretImg);
 	this.renderEnemies(particleImg);
 	this.renderTracers();
 	this.renderBullets();
@@ -105,7 +124,11 @@ td.Renderer.prototype.renderMap = function() {
 };
 
 td.Renderer.prototype.renderTurrets = function() {
+	//console.log(this.game.turrets['active'])
+	if(this.game.turrets["active"][1])
+		console.log(this.game.turrets["active"][1]["name"]);
 	var turrets = this.game.turrets.active;
+
 	function shadeColor(color, percent) {
 		//console.log(color);
 		var num = parseInt(color.substring(1),16),
@@ -124,11 +147,19 @@ td.Renderer.prototype.renderTurrets = function() {
 			var lvl = turrets[i].lvl;
 			this.ctx.beginPath();
 			color = shadeColor(color,(lvl)*15);
-			this.ctx.fillStyle = "green";
+			
+			if(this.game.turrets["active"][i]["name"] == "Accelerator")
+				this.ctx.drawImage(this.acceleratorImg,xPixelPos - halfSize*(1/(i+1))-15, yPixelPos - halfSize*(1/(i+1))-15,40,40);
+			else if(this.game.turrets["active"][i]["name"] == "Quadrupole")
+				this.ctx.drawImage(this.quadrupoleImg,xPixelPos - halfSize*(1/(i+1))-15, yPixelPos - halfSize*(1/(i+1))-15,40,40);
+			else if(this.game.turrets["active"][i]["name"] == "Dipole")
+				this.ctx.drawImage(this.dipoleImg,xPixelPos - halfSize*(1/(i+1))-15, yPixelPos - halfSize*(1/(i+1))-15,40,40);
+			
+			/*this.ctx.fillStyle = "green";
 			this.ctx.fillRect(xPixelPos - halfSize*(1/(i+1)), yPixelPos - halfSize*(1/(i+1)), 2 * halfSize*(1/(i+1)), 2 * halfSize*(1/(i+1)));
 			this.ctx.fillRect(xPixelPos - halfSize, yPixelPos - halfSize, 2 * halfSize, 2 * halfSize);			
 			this.ctx.fill();
-			this.ctx.closePath();
+			this.ctx.closePath();*/
 		}
 	}	
 };
@@ -165,26 +196,16 @@ td.Renderer.prototype.renderEnemies = function(isRange,particleImg) {
 		}
 
 		this.ctx.fillStyle = color;
-		this.ctx.beginPath();
-		this.ctx.arc(xPixelPos - halfSize, yPixelPos - 5 - halfSize, 3, 0, 2 * Math.PI, false);
-		this.ctx.fillStyle = 'blue';
-		this.ctx.fill();
+		this.ctx.drawImage(this.particleImg, xPixelPos - halfSize, yPixelPos - 5 - halfSize,15,15);
+
 
 		this.ctx.fillStyle = "rgba(1,0,0,0.2);";
-		this.ctx.beginPath();
-		this.ctx.arc(xPixelPos - halfSize, yPixelPos - 5 - halfSize, 3, 0, 2 * Math.PI, false);
-		this.ctx.fillStyle = 'blue';
-		this.ctx.fill();
+		this.ctx.drawImage(this.particleImg, xPixelPos - halfSize, yPixelPos - 5 - halfSize,15,15);
 
 		this.ctx.fillStyle = "#a5260a";
 
-		//this.ctx.drawImage(particleImg, xPixelPos - halfSize, yPixelPos - 5 - halfSize);
-		this.ctx.beginPath();
-		this.ctx.arc(xPixelPos - halfSize, yPixelPos - 5 - halfSize, 6, 0, 2 * Math.PI, false);
-		this.ctx.fillStyle = 'blue';
-		this.ctx.fill();
-		//this.ctx.fillRect(xPixelPos - halfSize, yPixelPos - 5 - halfSize, (enemies[i].hp/enemies[i].maxHp)*halfSize*2, 3);
-
+		this.ctx.drawImage(this.particleImg, xPixelPos - halfSize, yPixelPos - 5 - halfSize,15,15);
+		
 	}
 };
 
