@@ -19,6 +19,7 @@ td.PauseState.prototype.enter = function() {
 	this.setListeners();
 	document.getElementById('restart').style.display = 'block';
 	document.getElementById('resume').style.display = 'block';
+	document.getElementById('back').style.display = 'block';
 };
 
 td.PauseState.prototype.exit = function() {
@@ -28,6 +29,7 @@ td.PauseState.prototype.exit = function() {
 td.PauseState.prototype.resume = function() {
 	document.getElementById('restart').style.display = 'none';
 	document.getElementById('resume').style.display = 'none';
+	document.getElementById('back').style.display = 'none';
 	window.fsm.gotoPrevState();
 };
 

@@ -22,7 +22,13 @@ body {
 	top: 380px;
 	color: #FA0000;	
 }
-
+#back{
+	text-align: center;
+	position: absolute;
+	left: 29.6%;
+	top: 440px;
+	color: #FA0000;	
+}
 #gameStats {
 	float: left;
 	width: 200px;
