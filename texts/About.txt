@@ -1,0 +1,17 @@
+Accelerator Defence, is a Tower Defence game, based on the CERN Accelerator Complex.
+The game was created during the CERN 2014 webfest.
+
+
+
+Team:
+- Anti Asko 
+- Luke David Bernard
+- Spyros Gasteratos
+- Georgios Kaklamanos
+- Alex Mourtziapis
+
+All the texts were taken from various CERN websites and also from the "LHC The Guide" brochure.
+The images were also taken from CERN sites.
+The cern accelerator complex image that is used for the main map of the game, was created by Jet Goodson for his thesis, and it was taken from here:
+http://www.jetgoodson.com/thesisGallery.html
+
