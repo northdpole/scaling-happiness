@@ -214,7 +214,7 @@ function MapScreen() {
 	level5Button = this.addButton(level5Button);
 
 	level1Button.action = function () {
-		window.location = "tower-defence"
+		window.location = "tower-defence/index.html"
 	}
 
 	backButton = new Button(0.6,0.9,0.4,0.1);
